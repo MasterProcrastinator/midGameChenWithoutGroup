@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E142B772BD0186A00B41813 /* bensound-goodmood.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E142B762BD0186A00B41813 /* bensound-goodmood.mp3 */; };
 		BFDB8C232B97741000170A23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDB8C222B97741000170A23 /* AppDelegate.swift */; };
 		BFDB8C252B97741000170A23 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BFDB8C242B97741000170A23 /* GameScene.sks */; };
 		BFDB8C272B97741000170A23 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BFDB8C262B97741000170A23 /* Actions.sks */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E142B762BD0186A00B41813 /* bensound-goodmood.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-goodmood.mp3"; sourceTree = "<group>"; };
 		BFDB8C1F2B97741000170A23 /* midGameChen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = midGameChen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFDB8C222B97741000170A23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFDB8C242B97741000170A23 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				BFDB8C262B97741000170A23 /* Actions.sks */,
 				BFDB8C282B97741000170A23 /* GameScene.swift */,
 				BFDB8C2A2B97741000170A23 /* GameViewController.swift */,
+				3E142B762BD0186A00B41813 /* bensound-goodmood.mp3 */,
 				BFDB8C2C2B97741000170A23 /* Main.storyboard */,
 				BFDB8C2F2B97741200170A23 /* Assets.xcassets */,
 				BFDB8C312B97741200170A23 /* LaunchScreen.storyboard */,
@@ -237,6 +240,7 @@
 			files = (
 				BFDB8C2E2B97741000170A23 /* Main.storyboard in Resources */,
 				BFDB8C252B97741000170A23 /* GameScene.sks in Resources */,
+				3E142B772BD0186A00B41813 /* bensound-goodmood.mp3 in Resources */,
 				BFDB8C302B97741200170A23 /* Assets.xcassets in Resources */,
 				BFDB8C332B97741200170A23 /* LaunchScreen.storyboard in Resources */,
 				BFDB8C272B97741000170A23 /* Actions.sks in Resources */,
