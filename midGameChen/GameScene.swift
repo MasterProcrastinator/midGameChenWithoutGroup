@@ -10,7 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var player: SKSpriteNode!
-    
+    var deleteThis = 0
     var car: SKSpriteNode!
     var car2: SKSpriteNode!
     var car3: SKSpriteNode!
