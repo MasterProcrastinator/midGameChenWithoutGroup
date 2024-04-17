@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var car6: SKSpriteNode!
     var car7: SKSpriteNode!
     var car8: SKSpriteNode!
+    
     let cam = SKCameraNode()
     var gameOver = false
     var winLoseOutlet: SKLabelNode!
@@ -338,12 +339,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func updateTimer(){
         gameTimer += 1
     }
-    func jump(){
+    
+    //add keys for the movements below
+    
+    func jumpUp(){
         if gameOver == false{
             let jumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.3)
             player.run(jumpAction)
         }
     }
+    
+    func jumpDown(){
+        if gameOver == false{
+            let jumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.3)
+            player.run(jumpAction)
+        }
+    }
+    
+    func jumpLeft(){
+        if gameOver == false{
+            let jumpAction = SKAction.moveBy(x: -50, y: 0, duration: 0.2)
+            player.run(jumpAction)
+        }
+    }
+    
+    func jumpRight(){
+        if gameOver == false{
+            let jumpAction = SKAction.moveBy(x: 50, y: 0, duration: 0.2)
+            player.run(jumpAction)
+        }
+    }
+    
+    
+    
+    
+    
     func GameOver(){
         player.physicsBody?.velocity.dy = 0
 
@@ -370,7 +400,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func debugTeleportation(){
-        
         player.physicsBody?.velocity.dx = 0
         player.physicsBody?.velocity.dy = 0
         gameOver = false

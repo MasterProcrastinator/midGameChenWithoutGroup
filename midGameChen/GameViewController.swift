@@ -11,8 +11,29 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     var play : GameScene!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+            self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+            self.view.addGestureRecognizer(swipeLeft)
+
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        self.view.addGestureRecognizer(swipeDown)
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+    swipeUp.direction = UISwipeGestureRecognizer.Direction.up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        
+        
+        
         
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
                     UIDevice.current.setValue(value, forKey: "orientation")
@@ -43,9 +64,7 @@ class GameViewController: UIViewController {
         }
     }
 
-    @IBAction func jumpButton(_ sender: UIButton) {
-        play.jump()
-    }
+    
     @IBAction func restartAction(_ sender: UIButton) {
         play.restart()
     }
@@ -64,7 +83,26 @@ class GameViewController: UIViewController {
         play.debugTeleport = 0.0
         play.debugTeleportation()
     }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.right:
+                play.jumpRight()
+            case UISwipeGestureRecognizer.Direction.down:
+                play.jumpDown()
+            case UISwipeGestureRecognizer.Direction.left:
+                play.jumpLeft()
+            case UISwipeGestureRecognizer.Direction.up:
+                play.jumpUp()
+            default:
+                break
+            }
+        }
+    }
+    
 }
