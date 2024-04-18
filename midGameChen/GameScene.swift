@@ -139,7 +139,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timeLabel.position.y = cam.position.y + 550
         timeLabel.position.x = cam.position.x + 200
         cam.position.x = invisFollower.position.x
-        cam.position.y = invisFollower.position.y + 500
+        cam.position.y = invisFollower.position.y + 300
         winLoseOutlet.position.y = cam.position.y
         
         if (player.position.y >= invisFollower.position.y + 600){
