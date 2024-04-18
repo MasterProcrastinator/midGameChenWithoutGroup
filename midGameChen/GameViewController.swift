@@ -80,7 +80,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func teleport3(_ sender: UIButton) {
-        play.debugTeleport = 0.0
+        play.debugTeleport = -160
         play.debugTeleportation()
     }
     

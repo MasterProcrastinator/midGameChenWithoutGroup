@@ -10,7 +10,6 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var player: SKSpriteNode!
-    var deleteThis = 0
     var car: SKSpriteNode!
     var car2: SKSpriteNode!
     var car3: SKSpriteNode!
@@ -147,6 +146,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let moveFollower = SKAction.moveTo(y: player.position.y, duration: 1)
             invisFollower.run(moveFollower)
 
+        }
+        
+        if (player.position.y <= invisFollower.position.y - 50){
+            let moveFollower = SKAction.moveTo(y: player.position.y, duration: 0.3)
+            invisFollower.run(moveFollower)
         }
         
         //these cars go left
@@ -360,14 +364,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func jumpLeft(){
         if gameOver == false{
-            let jumpAction = SKAction.moveBy(x: -50, y: 0, duration: 0.2)
+            let jumpAction = SKAction.moveBy(x: -50, y: 0, duration: 0.15)
             player.run(jumpAction)
         }
     }
     
     func jumpRight(){
         if gameOver == false{
-            let jumpAction = SKAction.moveBy(x: 50, y: 0, duration: 0.2)
+            let jumpAction = SKAction.moveBy(x: 50, y: 0, duration: 0.15)
             player.run(jumpAction)
         }
     }
