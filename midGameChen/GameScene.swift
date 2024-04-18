@@ -364,14 +364,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func jumpLeft(){
         if gameOver == false{
-            let jumpAction = SKAction.moveBy(x: -50, y: 0, duration: 0.15)
+            let jumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.15)
             player.run(jumpAction)
         }
     }
     
     func jumpRight(){
         if gameOver == false{
-            let jumpAction = SKAction.moveBy(x: 50, y: 0, duration: 0.15)
+            let jumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.15)
             player.run(jumpAction)
         }
     }

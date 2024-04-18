@@ -92,11 +92,17 @@ class GameViewController: UIViewController {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.right:
-                play.jumpRight()
+                if play.player
+                    .position.x < 230{
+                    play.jumpRight()
+                }
             case UISwipeGestureRecognizer.Direction.down:
                 play.jumpDown()
             case UISwipeGestureRecognizer.Direction.left:
-                play.jumpLeft()
+                if play.player
+                    .position.x > -230{
+                    play.jumpLeft()
+                }
             case UISwipeGestureRecognizer.Direction.up:
                 play.jumpUp()
             default:
