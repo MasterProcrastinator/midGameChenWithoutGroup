@@ -19,6 +19,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var car7: SKSpriteNode!
     var car8: SKSpriteNode!
     
+    var test = Vehicle(image: "car", width: 0, height: 0, dx: 0, dy: 0, x: 0)
+        var list = [Vehicle]()
+    
     let cam = SKCameraNode()
     var gameOver = false
     var winLoseOutlet: SKLabelNode!
@@ -48,88 +51,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         winLoseOutlet.position.x = player.position.x
         
         
-        // adjust sizes to fit each type later
         
-        enumerateChildNodes(withName: "car") { [self]
-                         (node, _) in
-            car = node as? SKSpriteNode
-            car.texture = SKTexture(imageNamed: "car")
-            car.size.width = 80
-            car.size.height = 60
-            car.physicsBody?.mass = 100000
-
-        }
-
-        enumerateChildNodes(withName: "car2") { [self]
-                         (node, _) in
-            car2 = node as? SKSpriteNode
-            car2.texture = SKTexture(imageNamed: "car2")
-            car2.size.width = 80
-            car2.size.height = 60
-            car2.physicsBody?.mass = 100000
-
-        }
         
-        enumerateChildNodes(withName: "car3") { [self]
-                         (node, _) in
-            car3 = node as? SKSpriteNode
-            car3.texture = SKTexture(imageNamed: "car3")
-            car3.size.width = 141.008
-            car3.size.height = 90.07
-            car3.physicsBody?.mass = 100000
-
-        }
         
-        enumerateChildNodes(withName: "car4") { [self]
-                         (node, _) in
-            car4 = node as? SKSpriteNode
-            car4.texture = SKTexture(imageNamed: "car4")
-            car4.size.width = 175.001
-            car4.size.height = 100.119
-            car4.physicsBody?.mass = 100000
-
-        }
         
-        enumerateChildNodes(withName: "car5") { [self]
-                         (node, _) in
-            car5 = node as? SKSpriteNode
-            car5.texture = SKTexture(imageNamed: "car5")
-            car5.size.width = 113.976
-            car5.size.height = 60.289
-            car5.physicsBody?.mass = 100000
-
-        }
+        var count = test.widthList.count
         
-        //6 is gonna be the special one
-        enumerateChildNodes(withName: "car6") { [self]
-                         (node, _) in
-            car6 = node as? SKSpriteNode
-            car6.texture = SKTexture(imageNamed: "car6")
-            car6.size.width = 80
-            car6.size.height = 60
-            car6.physicsBody?.mass = 100000
-
-        }
+        list.append(test)
+        var testList = [car, car2, car3, car4, car5, car6, car7, car8]
         
-        enumerateChildNodes(withName: "car7") { [self]
-                         (node, _) in
-            car7 = node as? SKSpriteNode
-            car7.texture = SKTexture(imageNamed: "car7")
-            car7.size.width = 305.364
-            car7.size.height = 185.43
-            car7.physicsBody?.mass = 100000
+        for i in 0...count-1{
+            
+            enumerateChildNodes(withName: test.imageList[i]) { [self]
+                             (node, _) in
+                car = node as? SKSpriteNode
+                
+                testList[i] = node as? SKSpriteNode
+                
+                testList[i]!.texture = SKTexture(imageNamed: test.imageList[i])
+                testList[i]!.size.width = CGFloat(test.widthList[i])
+                testList[i]!.size.height = CGFloat(test.heightList[i])
+                testList[i]!.physicsBody?.mass = 100000
+            }
+           
 
+
+            
+            
         }
+
         
-        enumerateChildNodes(withName: "car8") { [self]
-                         (node, _) in
-            car8 = node as? SKSpriteNode
-            car8.texture = SKTexture(imageNamed: "car8")
-            car8.size.width = 800
-            car8.size.height = 127.072
-            car8.physicsBody?.mass = 100000
-
-        }
         
         
     }
@@ -155,110 +106,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //these cars go left
 
-        enumerateChildNodes(withName: "car") { [self]
-                         (node, _) in
-            car = node as? SKSpriteNode
-            car.physicsBody?.velocity.dx = -350
-            car.physicsBody?.velocity.dy = 0
-            
-            if car.position.x < -480{
-                car.position.x = 480
-            }
-
-        }
-        
-        enumerateChildNodes(withName: "car5") { [self]
-                         (node, _) in
-            car5 = node as? SKSpriteNode
-            car5.physicsBody?.velocity.dx = -500
-            car5.physicsBody?.velocity.dy = 0
-            
-            if car5.position.x < -480{
-                car5.position.x = 480
-            }
-
-        }
-        
-        enumerateChildNodes(withName: "car7") { [self]
-                         (node, _) in
-            car7 = node as? SKSpriteNode
-            car7.physicsBody?.velocity.dx = -800
-            car7.physicsBody?.velocity.dy = 0
-            
-            if car7.position.x < -900{
-                car7.position.x = 900
-            }
-
-        }
+        let count = test.vImageList.count
+               var testList = [car, car5, car7, car2, car3, car4, car6, car8]
+               
+               for i in 0...count-1{
+                   
+                   
+                   
+                   enumerateChildNodes(withName: test.vImageList[i]) { [self]
+                                    (node, _) in
+                       testList[i] = node as? SKSpriteNode
+                       testList[i]!.physicsBody?.velocity.dx = test.dxList[i]
+                       testList[i]!.physicsBody?.velocity.dy = test.dyList[i]
+                       
+                       //add special feature for car6
+                       
+                       if (testList[i]?.position.x)! < -test.xList[i]{
+                           testList[i]?.position.x = (test.xList[i])
+                           
+                           
+                       }
+                       
+                       
+                       
+                   }
+                   
+                   
+                   
+               }
 
         
         
         
-        //going right cars go below
         
-        enumerateChildNodes(withName: "car2") { [self]
-                         (node, _) in
-            car2 = node as? SKSpriteNode
-            car2.physicsBody?.velocity.dx = 350
-            car2.physicsBody?.velocity.dy = 0
-            
-            
-            if car2.position.x > 480{
-                car2.position.x = -480
-            }
-
-        }
         
-        enumerateChildNodes(withName: "car3") { [self]
-                         (node, _) in
-            car3 = node as? SKSpriteNode
-            car3.physicsBody?.velocity.dx = 400
-            car3.physicsBody?.velocity.dy = 0
-            
-            
-            if car3.position.x > 480{
-                car3.position.x = -480
-            }
-
-        }
-        
-        enumerateChildNodes(withName: "car4") { [self]
-                         (node, _) in
-            car4 = node as? SKSpriteNode
-            car4.physicsBody?.velocity.dx = 450
-            car4.physicsBody?.velocity.dy = 0
-            
-            
-            if car4.position.x > 480{
-                car4.position.x = -480
-            }
-
-        }
-        
-        enumerateChildNodes(withName: "car6") { [self]
-                         (node, _) in
-            car6 = node as? SKSpriteNode
-            car6.physicsBody?.velocity.dx = 1000
-            car6.physicsBody?.velocity.dy = 0
-            
-            //optional for 6, special features needed
-            if car6.position.x > 480{
-                car6.position.x = -480
-            }
-
-        }
-        
-        enumerateChildNodes(withName: "car8") { [self]
-                         (node, _) in
-            car8 = node as? SKSpriteNode
-            car8.physicsBody?.velocity.dx = 300
-            car8.physicsBody?.velocity.dy = 0
-            
-            if car8.position.x > 1000{
-                car8.position.x = -1000
-            }
-
-        }
+       
+      
         
         
 
@@ -280,53 +163,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func didBegin(_ contact: SKPhysicsContact) {
         
-        if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "car") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "car"){
-            
-            crash()
-            
-            }
-        
-        if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "car2") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "car2"){
-            
-            crash()
-            
-            }
-        
-        if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "car3") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "car3"){
-            
-            crash()
-            
-            }
-        
-        if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "car4") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "car4"){
-            
-            crash()
-            
-            }
-        
-        if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "car5") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "car5"){
-            
-            crash()
-            
-            }
-        
-        if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "car6") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "car6"){
-            
-            //special feature later
-            
-            }
-            
-        if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "car7") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "car7"){
-            
-            crash()
-            
-            }
-        
-        if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "car8") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "car8"){
-            
-            crash()
-            
-            }
+        let count = test.imageList.count
+             for i in 0...count-1{
+                 
+             
+                 if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == test.imageList[i]) || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == test.imageList[i]){
+                     
+                     crash()
+                     
+                     
+                     
+                     //special feature later for car6
+                     
+                     }
+                 
+                 
+                 
+                 
+             }
+
         
         
 
