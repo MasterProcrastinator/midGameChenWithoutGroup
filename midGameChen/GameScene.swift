@@ -104,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             invisFollower.run(moveFollower)
         }
         
-        //these cars go left
+        
 
         let count = test.vImageList.count
                var testList = [car, car5, car7, car2, car3, car4, car6, car8]
@@ -121,15 +121,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                        
                        //add special feature for car6
                        
-                       if (testList[i]?.position.x)! < -test.xList[i]{
-                           testList[i]?.position.x = (test.xList[i])
-                           
-                           
+                       
+                       
+                       
+                       
+                       if (test.xList[i] <= 2) {
+                           //right
+                           if (testList[i]?.position.x)! > (-1 * test.xList[i]){
+                               testList[i]?.position.x = (test.xList[i])
+                               //cars going right dont work
+                               //left negative // right positive
+                               
+                               
+                               
+                           }
+                       }
+                       else if (test.xList[i] > 2){
+                           //left
+                            if (testList[i]?.position.x)! < (-1 * test.xList[i]){
+                              testList[i]?.position.x = (test.xList[i])
+                            }
                        }
                        
                        
                        
-                   }
+                       
+                       
+                       
+                   } //end func
                    
                    
                    
@@ -150,7 +169,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-    }
+    }  //end update
     
     func crash(){
         winLoseOutlet.text = "You Died"
