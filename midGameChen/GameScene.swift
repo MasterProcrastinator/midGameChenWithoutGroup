@@ -88,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         timeLabel.text = "Time: \(gameTimer)"
         timeLabel.position.y = cam.position.y + 550
-        timeLabel.position.x = cam.position.x + 200
+        timeLabel.position.x = cam.position.x
         cam.position.x = invisFollower.position.x
         cam.position.y = invisFollower.position.y + 300
         winLoseOutlet.position.y = cam.position.y
