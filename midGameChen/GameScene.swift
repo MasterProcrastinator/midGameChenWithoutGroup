@@ -36,7 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var invisFollower: SKSpriteNode!
     
     override func didMove(to view: SKView) {
-        let backgroundmusic = SKAudioNode(fileNamed: "bendsound-goodmood")
+        let backgroundmusic = SKAudioNode(fileNamed: "bensound-goodmood")
         addChild(backgroundmusic)
         startTimer()
         timeLabel = (self.childNode(withName: "timeLabel") as! SKLabelNode)
