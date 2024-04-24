@@ -18,6 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var car6: SKSpriteNode!
     var car7: SKSpriteNode!
     var car8: SKSpriteNode!
+    var pbcar: SKSpriteNode!
     
     var test = Vehicle(image: "car", width: 0, height: 0, dx: 0, dy: 0, x: 0)
         var list = [Vehicle]()
@@ -34,7 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var invisFollower: SKSpriteNode!
     
     override func didMove(to view: SKView) {
-        let backgroundmusic = SKAudioNode(fileNamed: "bensound-goodmood")
+        let backgroundmusic = SKAudioNode(fileNamed: "bs")
         addChild(backgroundmusic)
         startTimer()
         timeLabel = (self.childNode(withName: "timeLabel") as! SKLabelNode)
@@ -55,10 +56,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        var count = test.widthList.count
+        let count = test.widthList.count
         
         list.append(test)
-        var testList = [car, car2, car3, car4, car5, car6, car7, car8]
+        var testList = [car, car2, car3, pbcar, car4, car5, car6, car7, car8]
         
         for i in 0...count-1{
             
@@ -107,7 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 
         let count = test.vImageList.count
-               var testList = [car, car5, car7, car2, car3, car4, car6, car8]
+               var testList = [car, car5, car7, pbcar, car2, car3, car4, car6, car8]
                
                for i in 0...count-1{
                    
@@ -125,7 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                        
                        
                        
-                       if (test.xList[i] <= 2) {
+                       if (test.xList[i] <= 3) {
                            //right
                            if (testList[i]?.position.x)! > (-1 * test.xList[i]){
                                testList[i]?.position.x = (test.xList[i])
@@ -136,7 +137,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                
                            }
                        }
-                       else if (test.xList[i] > 2){
+                       else if (test.xList[i] > 3){
                            //left
                             if (testList[i]?.position.x)! < (-1 * test.xList[i]){
                               testList[i]?.position.x = (test.xList[i])

@@ -24,10 +24,10 @@ public class Vehicle{
     
     
     
-    let dxList: [CGFloat] = [-350, -500, -800, 350, 400, 450, 1000, 300]
-    let dyList: [CGFloat] = [0, 0, 0, 0, 0, 0, 0, 0]
-    var xList: [CGFloat] = [480, 480, 900, -480, -480, -480, -480, -1000]
-    let vImageList = ["car", "car5", "car7", "car2", "car3", "car4", "car6", "car8"]
+    let dxList: [CGFloat] = [-350, -500, -800, -800 , 350, 400, 450, 1000, 300]
+    let dyList: [CGFloat] = [0, 0, 0, 0 , 0, 0, 0, 0, 0]
+    var xList: [CGFloat] = [480, 480, 900, 480 , -480, -480, -480, -480, -1000]
+    let vImageList = ["car", "car5", "car7", "pbcar" , "car2", "car3", "car4", "car6", "car8"]
     
     public init(image: String, width: Int, height: Int, mass: Int = 10000, dx: Int, dy: Int, x: Int) {
         self.image = image
