@@ -24,7 +24,7 @@ public class Vehicle{
     
     
     
-    let dxList: [CGFloat] = [-350, -500, -800, -800 , 350, 400, 450, 1000, 300, 400]
+    let dxList: [CGFloat] = [-350, -500, -800, -800 , 350, 400, 450, 1000, 300, 50]
     let dyList: [CGFloat] = [0, 0, 0, 0 , 0, 0, 0, 0, 0, 0]
     var xList: [CGFloat] = [480, 480, 900, 480 , -480, -480, -480, -480, -1000, -480]
     let vImageList = ["car", "car5", "car7", "pbcar" , "car2", "car3", "car4", "car6", "car8", "pgcar"]

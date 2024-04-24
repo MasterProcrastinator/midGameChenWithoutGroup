@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameTimer = 0
     var timer = Timer()
     var debugTeleport = 0.0
-
+    var farthestDistance = 0
 
     var invisFollower: SKSpriteNode!
     
@@ -53,7 +53,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         winLoseOutlet.position.x = player.position.x
         
         
-        
+        if ((Int)(player.position.y) > farthestDistance){
+            
+            farthestDistance = Int(player.position.y)
+            
+        }
         
         
         
@@ -224,7 +228,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //add keys for the movements below
     
-    func jumpUp(){
+        func jumpUp(){
         if gameOver == false{
             let jumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.3)
             player.run(jumpAction)
@@ -277,8 +281,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.removeAllActions()
         let rotateAction = SKAction.rotate(toAngle: 0, duration: 0)
         player.run(rotateAction)
+        player.physicsBody?.allowsRotation = false
         invisFollower.removeAllActions()
         gameTimer = 0
+        player.physicsBody?.allowsRotation = true
     }
     
     func debugTeleportation(){
