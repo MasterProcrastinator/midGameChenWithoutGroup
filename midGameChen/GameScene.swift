@@ -36,7 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var invisFollower: SKSpriteNode!
     
     override func didMove(to view: SKView) {
-        let backgroundmusic = SKAudioNode(fileNamed: "bs")
+        let backgroundmusic = SKAudioNode(fileNamed: "bendsound-goodmood")
         addChild(backgroundmusic)
         startTimer()
         timeLabel = (self.childNode(withName: "timeLabel") as! SKLabelNode)
@@ -284,7 +284,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.allowsRotation = false
         invisFollower.removeAllActions()
         gameTimer = 0
-        player.physicsBody?.allowsRotation = true
+        
     }
     
     func debugTeleportation(){
