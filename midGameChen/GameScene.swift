@@ -230,29 +230,53 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
         func jumpUp(){
         if gameOver == false{
-            let jumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.3)
-            player.run(jumpAction)
+            if(player.position.y > 6820 && player.position.y < 16000){
+                let slowedJumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.45)
+                player.run(slowedJumpAction)
+            }
+            else{
+                let jumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.3)
+                player.run(jumpAction)
+            }
         }
     }
     
     func jumpDown(){
         if gameOver == false{
-            let jumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.3)
-            player.run(jumpAction)
+            if(player.position.y > 6820 && player.position.y < 16000){
+                let slowedJumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.45)
+                player.run(slowedJumpAction)
+            }
+            else{
+                let jumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.3)
+                player.run(jumpAction)
+            }
         }
     }
     
     func jumpLeft(){
         if gameOver == false{
-            let jumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.15)
-            player.run(jumpAction)
+            if(player.position.y > 6820 && player.position.y < 16000){
+                let slowedJumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.3)
+                player.run(slowedJumpAction)
+            }
+            else {
+                let jumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.15)
+                player.run(jumpAction)
+            }
         }
     }
     
     func jumpRight(){
         if gameOver == false{
-            let jumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.15)
-            player.run(jumpAction)
+            if(player.position.y > 6820 && player.position.y < 16000){
+                let slowedJumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.3)
+                player.run(slowedJumpAction)
+            }
+            else{
+                let jumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.15)
+                player.run(jumpAction)
+            }
         }
     }
     
