@@ -231,7 +231,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         func jumpUp(){
         if gameOver == false{
             if(player.position.y > 6820 && player.position.y < 16000){
-                let slowedJumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.45)
+                let slowedJumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.6)
                 player.run(slowedJumpAction)
             }
             else{
@@ -244,7 +244,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func jumpDown(){
         if gameOver == false{
             if(player.position.y > 6820 && player.position.y < 16000){
-                let slowedJumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.45)
+                let slowedJumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.6)
                 player.run(slowedJumpAction)
             }
             else{
@@ -257,7 +257,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func jumpLeft(){
         if gameOver == false{
             if(player.position.y > 6820 && player.position.y < 16000){
-                let slowedJumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.3)
+                let slowedJumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.35)
                 player.run(slowedJumpAction)
             }
             else {
@@ -270,7 +270,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func jumpRight(){
         if gameOver == false{
             if(player.position.y > 6820 && player.position.y < 16000){
-                let slowedJumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.3)
+                let slowedJumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.35)
                 player.run(slowedJumpAction)
             }
             else{
