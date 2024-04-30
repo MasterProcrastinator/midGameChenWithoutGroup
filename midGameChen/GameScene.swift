@@ -20,7 +20,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var car8: SKSpriteNode!
     var pbcar: SKSpriteNode!
     var pgcar: SKSpriteNode!
-    
+    var mammoth: SKSpriteNode!
+    var whiteFox: SKSpriteNode!
+    var snowmobile: SKSpriteNode!
+    var iceTrain: SKSpriteNode!
     var test = Vehicle(image: "car", width: 0, height: 0, dx: 0, dy: 0, x: 0)
         var list = [Vehicle]()
     
@@ -64,7 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let count = test.widthList.count
         
         list.append(test)
-        var testList = [car, car2, car3, pbcar, car4, car5, car6, car7, car8, pgcar]
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
         
         for i in 0...count-1{
             
@@ -78,6 +81,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 testList[i]!.size.width = CGFloat(test.widthList[i])
                 testList[i]!.size.height = CGFloat(test.heightList[i])
                 testList[i]!.physicsBody?.mass = 100000
+            }
+            
+            enumerateChildNodes(withName: "pgcar") { [self]
+                             (node, _) in
+                pgcar = node as? SKSpriteNode
+                
+                
+                pgcar.physicsBody?.mass = 0.0001
             }
            
 
@@ -113,7 +124,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 
         let count = test.vImageList.count
-               var testList = [car, car5, car7, pbcar, car2, car3, car4, car6, car8, pgcar]
+               var testList = [car, car2, car3, car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
                
                for i in 0...count-1{
                    
@@ -194,8 +205,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
              
                  if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == test.imageList[i]) || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == test.imageList[i]){
                      
-                     crash()
+                     if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "pgcar") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "pgcar"){
+                         break
+                     }
                      
+                     else{
+                         crash()
+                     }
                      
                      
                      //special feature later for car6
