@@ -25,7 +25,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var snowmobile: SKSpriteNode!
     var iceTrain: SKSpriteNode!
     var test = Vehicle(image: "car", width: 0, height: 0, dx: 0, dy: 0, x: 0)
-        var list = [Vehicle]()
+        
+    
+   
+    
+    var list = [Vehicle(image: "car", width: 80, height: 60, dx: -350, dy: 0, x: 480),
+                Vehicle(image: "car2", width: 60, height: 60, dx: 350, dy: 0, x: -480),
+                Vehicle(image: "car3", width: 141, height: 90, dx: 400, dy: 0, x: -480),
+                Vehicle(image: "car4", width: 175, height: 100, dx: 450, dy: 0, x: -480),
+                Vehicle(image: "car5", width: 114, height: 60, dx: -500, dy: 0, x: 480),
+                Vehicle(image: "car6", width: 80, height: 60, dx: 1000, dy: 0, x: -480),
+                Vehicle(image: "car7", width: 305, height: 185, dx: -800, dy: 0, x: 900),
+                Vehicle(image: "car8", width: 1000, height: 127, dx: 100, dy: 0, x: -1000),
+                Vehicle(image: "penguin", width: 60, height: 60, dx: 50, dy: 0, x: -480),
+                Vehicle(image: "pbear", width: 300, height: 100, dx: 50, dy: 0, x: -480),
+                Vehicle(image: "whiteFox", width: 160, height: 50, dx: -300, dy: 0, x: 480),
+                Vehicle(image: "snowmobile", width: 175, height: 100, dx: 400, dy: 0, x: -480),
+                Vehicle(image: "iceTrain", width: 2000, height: 150, dx: -50, dy: 0, x: 750),
+                Vehicle(image: "mammoth", width: 730, height: 475, dx: 90, dy: 0, x: -700)
+    ]
+    
+    
+    
+    
+    
+    
+    
     
     let cam = SKCameraNode()
     var gameOver = false
@@ -64,22 +89,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        let count = test.widthList.count
+        let count = list.count
         
-        list.append(test)
+        
+
+        
         var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
+
         
         for i in 0...count-1{
             
-            enumerateChildNodes(withName: test.imageList[i]) { [self]
+            enumerateChildNodes(withName: list[i].image) { [self]
                              (node, _) in
                 car = node as? SKSpriteNode
                 
                 testList[i] = node as? SKSpriteNode
                 
-                testList[i]!.texture = SKTexture(imageNamed: test.imageList[i])
-                testList[i]!.size.width = CGFloat(test.widthList[i])
-                testList[i]!.size.height = CGFloat(test.heightList[i])
+                testList[i]!.texture = SKTexture(imageNamed: list[i].image)
+                testList[i]!.size.width = CGFloat(list[i].width)
+                testList[i]!.size.height = CGFloat(list[i].height)
                 testList[i]!.physicsBody?.mass = 100000
             }
             
@@ -123,18 +151,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
 
-        let count = test.vImageList.count
-               var testList = [car, car2, car3, car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
-               
+        let count = list.count
+        
+        
+
+        
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
+        
                for i in 0...count-1{
                    
                    
                    
-                   enumerateChildNodes(withName: test.vImageList[i]) { [self]
+                   enumerateChildNodes(withName: list[i].image) { [self]
                                     (node, _) in
                        testList[i] = node as? SKSpriteNode
-                       testList[i]!.physicsBody?.velocity.dx = test.dxList[i]
-                       testList[i]!.physicsBody?.velocity.dy = test.dyList[i]
+                       testList[i]!.physicsBody?.velocity.dx = CGFloat(list[i].dx)
+                       testList[i]!.physicsBody?.velocity.dy = CGFloat(list[i].dy)
                        
                        //add special feature for car6
                        
@@ -142,10 +174,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                        
                        
                        
-                       if (test.xList[i] <= 3) {
+                       if (list[i].x <= 1) {
                            //right
-                           if (testList[i]?.position.x)! > (-1 * test.xList[i]){
-                               testList[i]?.position.x = (test.xList[i])
+                           if (Int(((testList[i]?.position.x)!)) > -1 * list[i].x){
+                               testList[i]?.position.x = CGFloat((list[i].x))
                                //cars going right dont work
                                //left negative // right positive
                                
@@ -153,10 +185,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                
                            }
                        }
-                       else if (test.xList[i] > 3){
+                       else if (list[i].x > 1){
                            //left
-                            if (testList[i]?.position.x)! < (-1 * test.xList[i]){
-                              testList[i]?.position.x = (test.xList[i])
+                           if (Int((testList[i]?.position.x)!) < -1 * list[i].x){
+                               testList[i]?.position.x = CGFloat(list[i].x)
                             }
                        }
                        
@@ -199,11 +231,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func didBegin(_ contact: SKPhysicsContact) {
         
-        let count = test.imageList.count
+        let count = list.count
              for i in 0...count-1{
                  
              
-                 if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == test.imageList[i]) || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == test.imageList[i]){
+                 if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == list[i].image) || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == list[i].image){
                      
                      if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "pgcar") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "pgcar"){
                          break
