@@ -18,13 +18,8 @@ public class Vehicle{
     var x: Int
    
     
-    
-    
-    
-    
-    
 
-    
+
     
     public init(image: String, width: Int, height: Int, mass: Int = 10000, dx: Int, dy: Int, x: Int) {
         self.image = image

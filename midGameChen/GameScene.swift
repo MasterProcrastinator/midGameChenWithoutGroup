@@ -19,7 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var car7: SKSpriteNode!
     var car8: SKSpriteNode!
     var pbcar: SKSpriteNode!
-    var pgcar: SKSpriteNode!
+    var penguin: SKSpriteNode!
     var mammoth: SKSpriteNode!
     var whiteFox: SKSpriteNode!
     var snowmobile: SKSpriteNode!
@@ -36,13 +36,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 Vehicle(image: "car5", width: 114, height: 60, dx: -500, dy: 0, x: 480),
                 Vehicle(image: "car6", width: 80, height: 60, dx: 1000, dy: 0, x: -480),
                 Vehicle(image: "car7", width: 305, height: 185, dx: -800, dy: 0, x: 900),
-                Vehicle(image: "car8", width: 1000, height: 127, dx: 100, dy: 0, x: -1000),
-                Vehicle(image: "penguin", width: 60, height: 60, dx: 50, dy: 0, x: -480),
-                Vehicle(image: "pbear", width: 300, height: 100, dx: 50, dy: 0, x: -480),
+                Vehicle(image: "car8", width: 1000, height: 127, dx: 100, dy: 0, x: -700),
+                Vehicle(image: "penguin", width: 60, height: 60, dx: 50, dy: 0, x: -600),
+                Vehicle(image: "pbear", width: 250, height: 200, dx: 80, dy: 0, x: -480),
                 Vehicle(image: "whiteFox", width: 160, height: 50, dx: -300, dy: 0, x: 480),
                 Vehicle(image: "snowmobile", width: 175, height: 100, dx: 400, dy: 0, x: -480),
-                Vehicle(image: "iceTrain", width: 2000, height: 150, dx: -50, dy: 0, x: 750),
-                Vehicle(image: "mammoth", width: 730, height: 475, dx: 90, dy: 0, x: -700)
+                Vehicle(image: "iceTrain", width: 2000, height: 200, dx: -50, dy: 0, x: 750),
+                Vehicle(image: "mammoth", width: 730, height: 500, dx: 90, dy: 0, x: -700)
     ]
     
     
@@ -94,7 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 
         
-        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, penguin, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
 
         
         for i in 0...count-1{
@@ -111,12 +111,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 testList[i]!.physicsBody?.mass = 100000
             }
             
-            enumerateChildNodes(withName: "pgcar") { [self]
+            enumerateChildNodes(withName: "penguin") { [self]
                              (node, _) in
-                pgcar = node as? SKSpriteNode
+                penguin = node as? SKSpriteNode
                 
                 
-                pgcar.physicsBody?.mass = 0.0001
+                penguin.physicsBody?.mass = 0.0001
             }
            
 
@@ -156,7 +156,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 
         
-        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, penguin, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
         
                for i in 0...count-1{
                    
@@ -237,7 +237,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
              
                  if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == list[i].image) || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == list[i].image){
                      
-                     if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "pgcar") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "pgcar"){
+                     if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "penguin") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "penguin"){
                          break
                      }
                      
