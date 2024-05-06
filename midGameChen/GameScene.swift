@@ -7,6 +7,8 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
+
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var player: SKSpriteNode!
@@ -19,25 +21,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var car7: SKSpriteNode!
     var car8: SKSpriteNode!
     var pbcar: SKSpriteNode!
-    var penguin: SKSpriteNode!
+    var pgcar: SKSpriteNode!
     var mammoth: SKSpriteNode!
     var whiteFox: SKSpriteNode!
     var snowmobile: SKSpriteNode!
     var iceTrain: SKSpriteNode!
-    var armadillo: SKSpriteNode!
-    var spider: SKSpriteNode!
-    var camel: SKSpriteNode!
-    var scorpion: SKSpriteNode!
-    var tortoise: SKSpriteNode!
-    var desertScourge: SKSpriteNode!
-    var sandShark: SKSpriteNode!
-    var spider2: SKSpriteNode!
     var test = Vehicle(image: "car", width: 0, height: 0, dx: 0, dy: 0, x: 0)
-        
+    var soundplayer = AVAudioPlayer()
     
-   
-   // left = positive x and -dx
-    //going right = -x and positive dx
+    
+    
+    
     var list = [Vehicle(image: "car", width: 80, height: 60, dx: -350, dy: 0, x: 480),
                 Vehicle(image: "car2", width: 60, height: 60, dx: 350, dy: 0, x: -480),
                 Vehicle(image: "car3", width: 141, height: 90, dx: 400, dy: 0, x: -480),
@@ -45,24 +39,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 Vehicle(image: "car5", width: 114, height: 60, dx: -500, dy: 0, x: 480),
                 Vehicle(image: "car6", width: 80, height: 60, dx: 1000, dy: 0, x: -480),
                 Vehicle(image: "car7", width: 305, height: 185, dx: -800, dy: 0, x: 900),
-                Vehicle(image: "car8", width: 1000, height: 127, dx: 100, dy: 0, x: -700),
-                Vehicle(image: "penguin", width: 60, height: 60, dx: 50, dy: 0, x: -600),
-                Vehicle(image: "pbcar", width: 250, height: 180, dx: 80, dy: 0, x: -480),
+                Vehicle(image: "car8", width: 1000, height: 127, dx: 100, dy: 0, x: -1000),
+                Vehicle(image: "penguin", width: 60, height: 60, dx: 50, dy: 0, x: -480),
+                Vehicle(image: "pbear", width: 300, height: 100, dx: 50, dy: 0, x: -480),
                 Vehicle(image: "whiteFox", width: 160, height: 50, dx: -300, dy: 0, x: 480),
-                Vehicle(image: "snowmobile", width: 175, height: 90, dx: 400, dy: 0, x: -480),
-                Vehicle(image: "iceTrain", width: 2000, height: 190, dx: -50, dy: 0, x: 750),
-                Vehicle(image: "mammoth", width: 730, height: 480, dx: 90, dy: 0, x: -700),
-                Vehicle(image: "armadillo", width: 80, height: 75, dx: 200, dy: 0, x: -400),
-                Vehicle(image: "camel", width: 110, height: 90, dx: -200, dy: 0, x: 400),
-                Vehicle(image: "scorpion", width: 80, height: 65, dx: -170, dy: 0, x: 400),
-                Vehicle(image: "tortoise", width: 90, height: 75, dx: 170, dy: 0, x: -400),
-                Vehicle(image: "spider", width: 80, height: 70, dx: 150, dy: 0, x: -400),
-                Vehicle(image: "desertScourge", width: 400, height: 80, dx: -300, dy: 0, x: 400),
-                Vehicle(image: "sandShark", width: 200, height: 80, dx: -250, dy: 0, x: 400),
-                Vehicle(image: "spider2", width: 80, height: 70, dx: -200, dy: 0, x: 400)
+                Vehicle(image: "snowmobile", width: 175, height: 100, dx: 400, dy: 0, x: -480),
+                Vehicle(image: "iceTrain", width: 2000, height: 150, dx: -50, dy: 0, x: 750),
+                Vehicle(image: "mammoth", width: 730, height: 475, dx: 90, dy: 0, x: -700)
     ]
     
-
+    
     
     
     
@@ -77,12 +63,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timer = Timer()
     var debugTeleport = 0.0
     var farthestDistance = 0
-
+    
     var invisFollower: SKSpriteNode!
     
     override func didMove(to view: SKView) {
-        let backgroundmusic = SKAudioNode(fileNamed: "bensound-goodmood")
-        addChild(backgroundmusic)
+        //        let backgroundmusic = SKAudioNode(fileNamed: "bensound-goodmood")
+        //        addChild(backgroundmusic)
         startTimer()
         timeLabel = (self.childNode(withName: "timeLabel") as! SKLabelNode)
         timeLabel.fontSize = 30
@@ -105,19 +91,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+        let backgroundmusic = SKAudioNode(fileNamed: "bensound-goodmood")
+        addChild(backgroundmusic)
         
         let count = list.count
         
         
-
         
-        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, penguin, pbcar, mammoth, whiteFox, snowmobile, iceTrain, armadillo, camel, scorpion, tortoise, spider, desertScourge, sandShark, spider2]
-
+        
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
+        
         
         for i in 0...count-1{
             
             enumerateChildNodes(withName: list[i].image) { [self]
-                             (node, _) in
+                (node, _) in
                 car = node as? SKSpriteNode
                 
                 testList[i] = node as? SKSpriteNode
@@ -128,25 +116,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 testList[i]!.physicsBody?.mass = 100000
             }
             
-            enumerateChildNodes(withName: "penguin") { [self]
-                             (node, _) in
-                penguin = node as? SKSpriteNode
+            enumerateChildNodes(withName: "pgcar") { [self]
+                (node, _) in
+                pgcar = node as? SKSpriteNode
                 
                 
-                penguin.physicsBody?.mass = 0.0001
+                pgcar.physicsBody?.mass = 0.0001
             }
-           
-
-
+            
+            
+            
             
             
         }
-
+        
         
         
         
     }
-        
+    
     override func update(_ currentTime: TimeInterval) {
         timeLabel.text = "Time: \(gameTimer)"
         timeLabel.position.y = cam.position.y + 550
@@ -158,7 +146,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (player.position.y >= invisFollower.position.y + 600){
             let moveFollower = SKAction.moveTo(y: player.position.y, duration: 1)
             invisFollower.run(moveFollower)
-
+            
         }
         
         if (player.position.y <= invisFollower.position.y - 50){
@@ -167,71 +155,71 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-
+        
         let count = list.count
         
         
-
         
-        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, penguin, pbcar, mammoth, whiteFox, snowmobile, iceTrain, armadillo, camel, scorpion, tortoise, spider, desertScourge, sandShark, spider2]
         
-               for i in 0...count-1{
-                   
-                   
-                   
-                   enumerateChildNodes(withName: list[i].image) { [self]
-                                    (node, _) in
-                       testList[i] = node as? SKSpriteNode
-                       testList[i]!.physicsBody?.velocity.dx = CGFloat(list[i].dx)
-                       testList[i]!.physicsBody?.velocity.dy = CGFloat(list[i].dy)
-                       
-                       //add special feature for car6
-                       
-                       
-                       
-                       
-                       
-                       if (list[i].x <= 1) {
-                           //right
-                           if (Int(((testList[i]?.position.x)!)) > -1 * list[i].x){
-                               testList[i]?.position.x = CGFloat((list[i].x))
-                               //cars going right dont work
-                               //left negative // right positive
-                               
-                               
-                               
-                           }
-                       }
-                       else if (list[i].x > 1){
-                           //left
-                           if (Int((testList[i]?.position.x)!) < -1 * list[i].x){
-                               testList[i]?.position.x = CGFloat(list[i].x)
-                            }
-                       }
-                       
-                       
-                       
-                       
-                       
-                       
-                   } //end func
-                   
-                   
-                   
-               }
-
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
         
+        for i in 0...count-1{
+            
+            
+            
+            enumerateChildNodes(withName: list[i].image) { [self]
+                (node, _) in
+                testList[i] = node as? SKSpriteNode
+                testList[i]!.physicsBody?.velocity.dx = CGFloat(list[i].dx)
+                testList[i]!.physicsBody?.velocity.dy = CGFloat(list[i].dy)
+                
+                //add special feature for car6
+                
+                
+                
+                
+                
+                if (list[i].x <= 1) {
+                    //right
+                    if (Int(((testList[i]?.position.x)!)) > -1 * list[i].x){
+                        testList[i]?.position.x = CGFloat((list[i].x))
+                        //cars going right dont work
+                        //left negative // right positive
+                        
+                        
+                        
+                    }
+                }
+                else if (list[i].x > 1){
+                    //left
+                    if (Int((testList[i]?.position.x)!) < -1 * list[i].x){
+                        testList[i]?.position.x = CGFloat(list[i].x)
+                    }
+                }
+                
+                
+                
+                
+                
+                
+            } //end func
+            
+            
+            
+        }
         
         
         
         
-       
-      
         
         
-
-
-
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -245,36 +233,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOver = true
         GameOver()
     }
-
+    
     func didBegin(_ contact: SKPhysicsContact) {
         
         let count = list.count
-             for i in 0...count-1{
-                 
-             
-                 if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == list[i].image) || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == list[i].image){
-                     
-                     if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "penguin") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "penguin"){
-                         break
-                     }
-                     
-                     else{
-                         crash()
-                     }
-                     
-                     
-                     //special feature later for car6
-                     
-                     }
-                 
-                 
-                 
-                 
-             }
-
+        for i in 0...count-1{
+            
+            
+            if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == list[i].image) || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == list[i].image){
+                
+                if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "pgcar") || (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "pgcar"){
+                    break
+                }
+                
+                else{
+                    crash()
+                }
+                
+                
+                //special feature later for car6
+                
+            }
+            
+            
+            
+            
+        }
         
         
-
+        
+        
         
         
         
@@ -293,15 +281,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //add keys for the movements below
     
-        func jumpUp(){
+    func jumpUp(){
+        fjump()
         if gameOver == false{
-            if(player.position.y >= 6900 && player.position.y < 16000){
+            if(player.position.y > 6820 && player.position.y < 16000){
                 let slowedJumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.6)
                 player.run(slowedJumpAction)
-            }
-            else if(player.position.y >= 16000 && player.position.y < 19000){
-                let fastJumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.15)
-                player.run(fastJumpAction)
             }
             else{
                 let jumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.3)
@@ -311,14 +296,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func jumpDown(){
+        fjump()
         if gameOver == false{
-            if(player.position.y >= 6900 && player.position.y < 16000){
+            if(player.position.y > 6820 && player.position.y < 16000){
                 let slowedJumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.6)
                 player.run(slowedJumpAction)
-            }
-            else if(player.position.y >= 16000 && player.position.y < 19000){
-                let fastJumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.15)
-                player.run(fastJumpAction)
             }
             else{
                 let jumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.3)
@@ -328,14 +310,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func jumpLeft(){
+        sjump()
         if gameOver == false{
-            if(player.position.y >= 6900 && player.position.y < 16000){
+            if(player.position.y > 6820 && player.position.y < 16000){
                 let slowedJumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.35)
                 player.run(slowedJumpAction)
-            }
-            else if(player.position.y >= 16000 && player.position.y < 19000){
-                let fastJumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.075)
-                player.run(fastJumpAction)
             }
             else {
                 let jumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.15)
@@ -345,30 +324,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func jumpRight(){
+        var soundcount = 0
+        let sidejump = SKAudioNode(fileNamed: "sidejump")
+        addChild(sidejump)
         if gameOver == false{
-            if(player.position.y >= 6900 && player.position.y < 16000){
+            if(player.position.y > 6820 && player.position.y < 16000){
                 let slowedJumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.35)
                 player.run(slowedJumpAction)
-            }
-            else if(player.position.y >= 16000 && player.position.y < 19000){
-                    let fastJumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.075)
-                    player.run(fastJumpAction)
             }
             else{
                 let jumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.15)
                 player.run(jumpAction)
             }
         }
+        
     }
-    
-    
     
     
     
     func GameOver(){
         player.physicsBody?.velocity.dy = 0
-
-    
+        
+        
     }
     
     func restart(){
@@ -410,7 +387,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         invisFollower.removeAllActions()
         gameTimer = 0
     }
+    func sjump(){
+//        let sjump = SKAudioNode(fileNamed: "sidejump")
+//        addChild(sjump)
+        player.run(SKAction.playSoundFileNamed("sidejump",waitForCompletion:false));
 
-    
-    
+    }
+    func fjump(){
+//        let fjump = SKAudioNode(fileNamed: "fowardjump")
+//        addChild(fjump)
+        
+        
+        player.run(SKAction.playSoundFileNamed("fowardjump",waitForCompletion:false));
+        
+        
+        
+        
+    }
 }
