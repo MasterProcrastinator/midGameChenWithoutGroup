@@ -10,6 +10,14 @@
 		3E142B772BD0186A00B41813 /* bensound-goodmood.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E142B762BD0186A00B41813 /* bensound-goodmood.mp3 */; };
 		3E402E4F2BE9267A0098333E /* fowardjump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E402E4E2BE9267A0098333E /* fowardjump.mp3 */; };
 		3E402E512BE926880098333E /* sidejump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E402E502BE926880098333E /* sidejump.mp3 */; };
+		3E402E532BE92A6E0098333E /* death1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3E402E522BE92A6E0098333E /* death1.wav */; };
+		3E402E552BE92A750098333E /* death2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3E402E542BE92A750098333E /* death2.wav */; };
+		3E402E572BE92A7B0098333E /* death3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E402E562BE92A7B0098333E /* death3.mp3 */; };
+		3E402E592BE92A820098333E /* death4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E402E582BE92A820098333E /* death4.mp3 */; };
+		3E402E5B2BE92A870098333E /* death5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E402E5A2BE92A870098333E /* death5.mp3 */; };
+		3E402E5D2BE92A8D0098333E /* death6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E402E5C2BE92A8D0098333E /* death6.mp3 */; };
+		3E402E5F2BE92A930098333E /* death7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E402E5E2BE92A930098333E /* death7.mp3 */; };
+		3E402E612BE92A990098333E /* death8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E402E602BE92A990098333E /* death8.mp3 */; };
 		4C1EEE1D2BD2B5730027F5B9 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1EEE1C2BD2B5730027F5B9 /* Vehicle.swift */; };
 		BFDB8C232B97741000170A23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDB8C222B97741000170A23 /* AppDelegate.swift */; };
 		BFDB8C252B97741000170A23 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BFDB8C242B97741000170A23 /* GameScene.sks */; };
@@ -45,6 +53,14 @@
 		3E142B762BD0186A00B41813 /* bensound-goodmood.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-goodmood.mp3"; sourceTree = "<group>"; };
 		3E402E4E2BE9267A0098333E /* fowardjump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fowardjump.mp3; path = ../../../Downloads/fowardjump.mp3; sourceTree = "<group>"; };
 		3E402E502BE926880098333E /* sidejump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sidejump.mp3; path = ../../../Downloads/sidejump.mp3; sourceTree = "<group>"; };
+		3E402E522BE92A6E0098333E /* death1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death1.wav; sourceTree = "<group>"; };
+		3E402E542BE92A750098333E /* death2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death2.wav; sourceTree = "<group>"; };
+		3E402E562BE92A7B0098333E /* death3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death3.mp3; sourceTree = "<group>"; };
+		3E402E582BE92A820098333E /* death4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death4.mp3; sourceTree = "<group>"; };
+		3E402E5A2BE92A870098333E /* death5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death5.mp3; sourceTree = "<group>"; };
+		3E402E5C2BE92A8D0098333E /* death6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death6.mp3; sourceTree = "<group>"; };
+		3E402E5E2BE92A930098333E /* death7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death7.mp3; sourceTree = "<group>"; };
+		3E402E602BE92A990098333E /* death8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death8.mp3; sourceTree = "<group>"; };
 		4C1EEE1C2BD2B5730027F5B9 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		BFDB8C1F2B97741000170A23 /* midGameChen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = midGameChen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFDB8C222B97741000170A23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +134,14 @@
 				BFDB8C2A2B97741000170A23 /* GameViewController.swift */,
 				3E142B762BD0186A00B41813 /* bensound-goodmood.mp3 */,
 				3E402E4E2BE9267A0098333E /* fowardjump.mp3 */,
+				3E402E542BE92A750098333E /* death2.wav */,
+				3E402E5E2BE92A930098333E /* death7.mp3 */,
+				3E402E602BE92A990098333E /* death8.mp3 */,
+				3E402E5A2BE92A870098333E /* death5.mp3 */,
+				3E402E5C2BE92A8D0098333E /* death6.mp3 */,
+				3E402E562BE92A7B0098333E /* death3.mp3 */,
+				3E402E582BE92A820098333E /* death4.mp3 */,
+				3E402E522BE92A6E0098333E /* death1.wav */,
 				3E402E502BE926880098333E /* sidejump.mp3 */,
 				BFDB8C2C2B97741000170A23 /* Main.storyboard */,
 				BFDB8C2F2B97741200170A23 /* Assets.xcassets */,
@@ -247,14 +271,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E402E532BE92A6E0098333E /* death1.wav in Resources */,
+				3E402E5B2BE92A870098333E /* death5.mp3 in Resources */,
+				3E402E572BE92A7B0098333E /* death3.mp3 in Resources */,
+				3E402E592BE92A820098333E /* death4.mp3 in Resources */,
 				BFDB8C2E2B97741000170A23 /* Main.storyboard in Resources */,
 				BFDB8C252B97741000170A23 /* GameScene.sks in Resources */,
+				3E402E612BE92A990098333E /* death8.mp3 in Resources */,
 				3E402E4F2BE9267A0098333E /* fowardjump.mp3 in Resources */,
+				3E402E552BE92A750098333E /* death2.wav in Resources */,
+				3E402E5D2BE92A8D0098333E /* death6.mp3 in Resources */,
 				3E402E512BE926880098333E /* sidejump.mp3 in Resources */,
 				3E142B772BD0186A00B41813 /* bensound-goodmood.mp3 in Resources */,
 				BFDB8C302B97741200170A23 /* Assets.xcassets in Resources */,
 				BFDB8C332B97741200170A23 /* LaunchScreen.storyboard in Resources */,
 				BFDB8C272B97741000170A23 /* Actions.sks in Resources */,
+				3E402E5F2BE92A930098333E /* death7.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

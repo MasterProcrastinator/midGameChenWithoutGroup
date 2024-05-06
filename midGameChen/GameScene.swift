@@ -28,7 +28,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var iceTrain: SKSpriteNode!
     var joe: SKSpriteNode!
     var test = Vehicle(image: "car", width: 0, height: 0, dx: 0, dy: 0, x: 0)
-    var soundplayer = AVAudioPlayer()
+    var deathsounds = [SKAudioNode(fileNamed: "death1"),SKAudioNode(fileNamed: "death2"),SKAudioNode(fileNamed: "death3"),SKAudioNode(fileNamed: "death4"),SKAudioNode(fileNamed: "death5"),SKAudioNode(fileNamed: "death6"),SKAudioNode(fileNamed: "death7"),SKAudioNode(fileNamed: "death8")
+    ]
     
     
     
