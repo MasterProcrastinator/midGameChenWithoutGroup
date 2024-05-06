@@ -24,11 +24,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var whiteFox: SKSpriteNode!
     var snowmobile: SKSpriteNode!
     var iceTrain: SKSpriteNode!
+    var armadillo: SKSpriteNode!
+    var spider: SKSpriteNode!
+    var camel: SKSpriteNode!
+    var scorpion: SKSpriteNode!
+    var tortoise: SKSpriteNode!
+    var desertScourge: SKSpriteNode!
+    var sandShark: SKSpriteNode!
+    var spider2: SKSpriteNode!
     var test = Vehicle(image: "car", width: 0, height: 0, dx: 0, dy: 0, x: 0)
         
     
    
-    
+   // left = positive x and -dx
+    //going right = -x and positive dx
     var list = [Vehicle(image: "car", width: 80, height: 60, dx: -350, dy: 0, x: 480),
                 Vehicle(image: "car2", width: 60, height: 60, dx: 350, dy: 0, x: -480),
                 Vehicle(image: "car3", width: 141, height: 90, dx: 400, dy: 0, x: -480),
@@ -42,10 +51,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 Vehicle(image: "whiteFox", width: 160, height: 50, dx: -300, dy: 0, x: 480),
                 Vehicle(image: "snowmobile", width: 175, height: 90, dx: 400, dy: 0, x: -480),
                 Vehicle(image: "iceTrain", width: 2000, height: 190, dx: -50, dy: 0, x: 750),
-                Vehicle(image: "mammoth", width: 730, height: 480, dx: 90, dy: 0, x: -700)
+                Vehicle(image: "mammoth", width: 730, height: 480, dx: 90, dy: 0, x: -700),
+                Vehicle(image: "armadillo", width: 80, height: 75, dx: 200, dy: 0, x: -400),
+                Vehicle(image: "camel", width: 110, height: 90, dx: -200, dy: 0, x: 400),
+                Vehicle(image: "scorpion", width: 80, height: 65, dx: -170, dy: 0, x: 400),
+                Vehicle(image: "tortoise", width: 90, height: 75, dx: 170, dy: 0, x: -400),
+                Vehicle(image: "spider", width: 80, height: 70, dx: 150, dy: 0, x: -400),
+                Vehicle(image: "desertScourge", width: 400, height: 80, dx: -300, dy: 0, x: 400),
+                Vehicle(image: "sandShark", width: 200, height: 80, dx: -250, dy: 0, x: 400),
+                Vehicle(image: "spider2", width: 80, height: 70, dx: -200, dy: 0, x: 400)
     ]
     
-    
+
     
     
     
@@ -94,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 
         
-        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, penguin, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, penguin, pbcar, mammoth, whiteFox, snowmobile, iceTrain, armadillo, camel, scorpion, tortoise, spider, desertScourge, sandShark, spider2]
 
         
         for i in 0...count-1{
@@ -156,7 +173,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 
         
-        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, penguin, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, penguin, pbcar, mammoth, whiteFox, snowmobile, iceTrain, armadillo, camel, scorpion, tortoise, spider, desertScourge, sandShark, spider2]
         
                for i in 0...count-1{
                    
@@ -278,9 +295,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
         func jumpUp(){
         if gameOver == false{
-            if(player.position.y >= 6900 && player.position.y <= 16000){
+            if(player.position.y >= 6900 && player.position.y < 16000){
                 let slowedJumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.6)
                 player.run(slowedJumpAction)
+            }
+            else if(player.position.y >= 16000 && player.position.y < 19000){
+                let fastJumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.15)
+                player.run(fastJumpAction)
             }
             else{
                 let jumpAction = SKAction.moveBy(x: 0, y: 100, duration: 0.3)
@@ -291,9 +312,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func jumpDown(){
         if gameOver == false{
-            if(player.position.y >= 6900 && player.position.y <= 16000){
+            if(player.position.y >= 6900 && player.position.y < 16000){
                 let slowedJumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.6)
                 player.run(slowedJumpAction)
+            }
+            else if(player.position.y >= 16000 && player.position.y < 19000){
+                let fastJumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.15)
+                player.run(fastJumpAction)
             }
             else{
                 let jumpAction = SKAction.moveBy(x: 0, y: -100, duration: 0.3)
@@ -304,9 +329,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func jumpLeft(){
         if gameOver == false{
-            if(player.position.y >= 6900 && player.position.y <= 16000){
+            if(player.position.y >= 6900 && player.position.y < 16000){
                 let slowedJumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.35)
                 player.run(slowedJumpAction)
+            }
+            else if(player.position.y >= 16000 && player.position.y < 19000){
+                let fastJumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.075)
+                player.run(fastJumpAction)
             }
             else {
                 let jumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.15)
@@ -317,9 +346,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func jumpRight(){
         if gameOver == false{
-            if(player.position.y >= 6900 && player.position.y <= 16000){
+            if(player.position.y >= 6900 && player.position.y < 16000){
                 let slowedJumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.35)
                 player.run(slowedJumpAction)
+            }
+            else if(player.position.y >= 16000 && player.position.y < 19000){
+                    let fastJumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.075)
+                    player.run(fastJumpAction)
             }
             else{
                 let jumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.15)
