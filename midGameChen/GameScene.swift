@@ -229,6 +229,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }  //end update
     
     func crash(){
+        deathaffect()
         winLoseOutlet.text = "You Died"
         player.physicsBody?.allowsRotation = true
         player.physicsBody?.friction = 0.5
@@ -402,5 +403,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         player.run(SKAction.playSoundFileNamed("fowardjump",waitForCompletion:false));
         
+    }
+    func deathaffect(){
+        let randomInt = Int.random(in: 0..<7)
+        player.run(SKAction.playSoundFileNamed("\(deathsounds[randomInt])",waitForCompletion:false));
+
     }
 }
