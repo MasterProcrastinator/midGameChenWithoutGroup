@@ -324,9 +324,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func jumpRight(){
-        var soundcount = 0
-        let sidejump = SKAudioNode(fileNamed: "sidejump")
-        addChild(sidejump)
+//        let sidejump = SKAudioNode(fileNamed: "sidejump")
+//        addChild(sidejump)
+        sjump()
         if gameOver == false{
             if(player.position.y > 6820 && player.position.y < 16000){
                 let slowedJumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.35)
@@ -397,11 +397,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        let fjump = SKAudioNode(fileNamed: "fowardjump")
 //        addChild(fjump)
         
-        
         player.run(SKAction.playSoundFileNamed("fowardjump",waitForCompletion:false));
-        
-        
-        
         
     }
 }
