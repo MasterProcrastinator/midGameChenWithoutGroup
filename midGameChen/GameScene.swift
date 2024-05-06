@@ -26,6 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var whiteFox: SKSpriteNode!
     var snowmobile: SKSpriteNode!
     var iceTrain: SKSpriteNode!
+    var joe: SKSpriteNode!
     var test = Vehicle(image: "car", width: 0, height: 0, dx: 0, dy: 0, x: 0)
     var soundplayer = AVAudioPlayer()
     
@@ -45,7 +46,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 Vehicle(image: "whiteFox", width: 160, height: 50, dx: -300, dy: 0, x: 480),
                 Vehicle(image: "snowmobile", width: 175, height: 100, dx: 400, dy: 0, x: -480),
                 Vehicle(image: "iceTrain", width: 2000, height: 150, dx: -50, dy: 0, x: 750),
-                Vehicle(image: "mammoth", width: 730, height: 475, dx: 90, dy: 0, x: -700)
+                Vehicle(image: "mammoth", width: 730, height: 475, dx: 90, dy: 0, x: -700),
+                Vehicle(image: "joe", width: 200, height: 2000, dx: -2000, dy: 0, x: 2000)
     ]
     
     
@@ -99,7 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain, joe]
         
         
         for i in 0...count-1{
@@ -161,7 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain]
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbcar, mammoth, whiteFox, snowmobile, iceTrain, joe]
         
         for i in 0...count-1{
             
