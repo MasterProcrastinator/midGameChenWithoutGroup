@@ -99,21 +99,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let cam = SKCameraNode()
     var gameOver = false
     var winLoseOutlet: SKLabelNode!
+    
+    
     var timeLabel: SKLabelNode!
+    var farthestLabel: SKLabelNode!
+    
     var gameTimer = 0
     var timer = Timer()
     var debugTeleport = 0.0
+    var distance = 0
     var farthestDistance = 0
     var lives = 5
     var invisFollower: SKSpriteNode!
     var livesLabel: SKLabelNode!
-
+    let defaults = UserDefaults.standard
     
     override func didMove(to view: SKView) {
+        
+         
+        farthestDistance = defaults.integer(forKey: "dist")
+        
+        
         //        let backgroundmusic = SKAudioNode(fileNamed: "bensound-goodmood")
         //        addChild(backgroundmusic)
         startTimer()
         timeLabel = (self.childNode(withName: "timeLabel") as! SKLabelNode)
+        farthestLabel = (self.childNode(withName: "farthestLabel") as! SKLabelNode)
         livesLabel = (self.childNode(withName: "livesLabel") as! SKLabelNode)
         lives = 5
         timeLabel.fontSize = 30
@@ -129,11 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         winLoseOutlet.position.x = player.position.x
         
         
-        if ((Int)(player.position.y) > farthestDistance){
-            
-            farthestDistance = Int(player.position.y)
-            
-        }
+       
         
         
         let backgroundmusic = SKAudioNode(fileNamed: "bensound-goodmood")
@@ -250,15 +257,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
+        distance = Int(player.position.y)
+       
+       if distance > farthestDistance{
+           farthestDistance = distance
+           defaults.set(farthestDistance, forKey: "dist")
+           
+       }
         
         
-        
-        timeLabel.text = "Time: \(gameTimer)"
+        timeLabel.text = "distance: \(distance)"
+        farthestLabel.text = "farthest: \(farthestDistance)"
+        farthestLabel.position.y = cam.position.y + 500
+        farthestLabel.position.x = cam.position.x + 220
         timeLabel.position.y = cam.position.y + 550
-        timeLabel.position.x = cam.position.x
+        timeLabel.position.x = cam.position.x + 190
+        farthestLabel.fontName = "AvenirNext-Bold"
+        timeLabel.fontName = "AvenirNext-Bold"
+
         livesLabel.text = "Lives: \(lives)"
         livesLabel.position.y = cam.position.y + 450
         livesLabel.position.x = cam.position.x
+        
+        livesLabel.fontName = "AvenirNext-Bold"
         cam.position.x = invisFollower.position.x
         cam.position.y = invisFollower.position.y + 300
         winLoseOutlet.position.y = cam.position.y
