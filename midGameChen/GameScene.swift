@@ -41,11 +41,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var lastCheckpoint = -800
     var checkpoint1 = -800
-    var checkpoint2 = 2730
-    var checkpoint3 = 8850
+    var checkpoint2 = 2700
+    var checkpoint3 = 8800
     var checkpoint4 = 12800
     var checkpoint5 = 16100
-    var checkpoint6 = 17450
+    var checkpoint6 = 17400
     var checkpoint7 = 18700
     
     
