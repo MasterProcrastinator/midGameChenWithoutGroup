@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var car7: SKSpriteNode!
     var car8: SKSpriteNode!
     var pbear: SKSpriteNode!
-    var pgcar: SKSpriteNode!
+    var penguin: SKSpriteNode!
     var mammoth: SKSpriteNode!
     var whiteFox: SKSpriteNode!
     var snowmobile: SKSpriteNode!
@@ -151,7 +151,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbear, mammoth, whiteFox, snowmobile, iceTrain, tortoise, spider, desertScourge, sandShark, spider2, scorpion, armadillo, sandShark]
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, penguin, pbear, mammoth, whiteFox, snowmobile, iceTrain, tortoise, spider, desertScourge, sandShark, spider2, scorpion, armadillo, sandShark]
         
         
         
@@ -175,10 +175,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         enumerateChildNodes(withName: "pgcar") { [self]
             (node, _) in
-            pgcar = node as? SKSpriteNode
+            penguin = node as? SKSpriteNode
             
             
-            pgcar.physicsBody?.mass = 0.0001
+            penguin.physicsBody?.mass = 0.0001
         }
         
         //meteors go downward
@@ -313,7 +313,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, pgcar, pbear, mammoth, whiteFox, snowmobile, iceTrain, tortoise, spider, desertScourge, sandShark, spider2, scorpion, armadillo, sandShark]
+        var testList = [car, car2, car3 ,car4, car5, car6, car7, car8, penguin, pbear, mammoth, whiteFox, snowmobile, iceTrain, tortoise, spider, desertScourge, sandShark, spider2, scorpion, armadillo, sandShark]
         
         for i in 0...count-1{
             
