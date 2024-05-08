@@ -72,7 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 Vehicle(image: "car7", width: 305, height: 185, dx: -800, dy: 0, x: 900),
                 Vehicle(image: "car8", width: 1000, height: 127, dx: 100, dy: 0, x: -1000),
                 Vehicle(image: "penguin", width: 60, height: 60, dx: 50, dy: 0, x: -480),
-                Vehicle(image: "pbear", width: 300, height: 100, dx: 50, dy: 0, x: -480),
+                Vehicle(image: "pbear", width: 300, height: 200, dx: 50, dy: 0, x: -480),
                 Vehicle(image: "whiteFox", width: 160, height: 50, dx: -300, dy: 0, x: 480),
                 Vehicle(image: "snowmobile", width: 175, height: 100, dx: 400, dy: 0, x: -480),
                 Vehicle(image: "iceTrain", width: 2000, height: 150, dx: -50, dy: 0, x: 750),
