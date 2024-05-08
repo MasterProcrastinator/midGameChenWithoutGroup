@@ -47,7 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var checkpoint5 = 16100
     var checkpoint6 = 17400
     var checkpoint7 = 18700
-    
+    var trueCheckpoint = -800
     
     
     
@@ -233,21 +233,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //checkpoint code
         if player.position.y < CGFloat(checkpoint2){
             lastCheckpoint = checkpoint1
+            trueCheck()
         }
         else if (player.position.y >= CGFloat(checkpoint2) && player.position.y < CGFloat(checkpoint3)){
             lastCheckpoint = checkpoint2
+            trueCheck()
         }
         else if (player.position.y >= CGFloat(checkpoint3) && player.position.y < CGFloat(checkpoint4)){
             lastCheckpoint = checkpoint3
+            trueCheck()
         }
         else if (player.position.y >= CGFloat(checkpoint4) && player.position.y < CGFloat(checkpoint5)){
             lastCheckpoint = checkpoint4
+            trueCheck()
         }
         else if (player.position.y >= CGFloat(checkpoint5) && player.position.y < CGFloat(checkpoint6)){
             lastCheckpoint = checkpoint5
+            trueCheck()
         }
         else if (player.position.y >= CGFloat(checkpoint6) && player.position.y < CGFloat(checkpoint7)){
             lastCheckpoint = checkpoint6
+            trueCheck()
         }
         
         //continue once done with space
@@ -619,6 +625,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         invisFollower.removeAllActions()
         gameTimer = 0
         lives = 5
+        trueCheckpoint = -800
     }
     
     func debugTeleportation(){
@@ -665,7 +672,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.zPosition = 1
         //player.position.y = (CGFloat)(lastCheckpoint)
         player.removeAllActions()
-        let tpBack = SKAction.moveTo(y: (CGFloat)(lastCheckpoint), duration: 0)
+        let tpBack = SKAction.moveTo(y: (CGFloat)(trueCheckpoint), duration: 0)
         player.run(tpBack)
         player.position.x = 0
         invisFollower.position.y = player.position.y
@@ -674,8 +681,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    
-    
+    func trueCheck(){
+        if(trueCheckpoint < lastCheckpoint){
+            trueCheckpoint = lastCheckpoint
+        }
+        
+    }
     
     
     
