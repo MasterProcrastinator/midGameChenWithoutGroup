@@ -460,7 +460,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     break
                 }
                     
-                    else if(lives > 0){
+                    else if(lives > 1){
                         lives-=1
                         teleportLastCheckpoint()
                         print("should have tped")
@@ -556,7 +556,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 player.run(fastJumpAction)
             }
             else if(player.position.y >= 20800 && player.position.y < 31000){
-                let spaceJumpAction = SKAction.moveBy(x: -300, y: 0, duration: 0.45)
+                let spaceJumpAction = SKAction.moveBy(x: -100, y: 0, duration: 0.3)
                 player.run(spaceJumpAction)
             }
             else {
@@ -580,7 +580,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player.run(fastJumpAction)
             }
             else if(player.position.y >= 20800 && player.position.y < 31000){
-                let spaceJumpAction = SKAction.moveBy(x: 300, y: 0, duration: 0.45)
+                let spaceJumpAction = SKAction.moveBy(x: 100, y: 0, duration: 0.3)
                 player.run(spaceJumpAction)
             }
             else{
@@ -618,7 +618,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.allowsRotation = false
         invisFollower.removeAllActions()
         gameTimer = 0
-        lives = 10
+        lives = 5
     }
     
     func debugTeleportation(){
